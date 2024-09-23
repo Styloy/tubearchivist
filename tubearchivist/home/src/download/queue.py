@@ -246,6 +246,8 @@ class PendingList(PendingIndex):
         total = len(self.missing_videos)
         videos_added = []
         for idx, (youtube_id, vid_type) in enumerate(self.missing_videos):
+            sleep_interval = self.config["downloads"].get("sleep_interval", 0)
+            sleep(sleep_interval)
             if self.task and self.task.is_stopped():
                 break
 
